@@ -1,4 +1,29 @@
+# initializr.env.maven
 initializr:
+  packages:
+    - name: infrastructure/service
+      id: infrastructure/service
+      default: false
+    - name: infrastructure/dto
+      id: infrastructure/dto
+      default: false
+    - name: domain/dto
+      id: domain/dto
+      default: false
+    - name: domain/service
+      id: domain/service
+      default: false
+    - name: ui/controller
+      id: ui/controller
+      default: false
+  env:
+    maven:
+      parent:
+        groupId: com.example
+        artifactId: my-parent
+        version: 1.0.0
+        relativePath: ../pom.xml
+        includeSpringBootBom : true
   group-id:
     value: org.acme
   dependencies:

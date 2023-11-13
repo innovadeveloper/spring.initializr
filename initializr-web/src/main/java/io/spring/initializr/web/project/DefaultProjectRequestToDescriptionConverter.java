@@ -17,6 +17,7 @@
 package io.spring.initializr.web.project;
 
 import java.text.Normalizer;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -96,6 +97,7 @@ public class DefaultProjectRequestToDescriptionConverter
 		description.setPackaging(Packaging.forId(request.getPackaging()));
 		description.setPlatformVersion(platformVersion);
 		description.setVersion(request.getVersion());
+		description.setPackages((ArrayList<String>) metadata.getPackages().getContent().stream().map(item -> item.getName()).collect(Collectors.toList()));
 		resolvedDependencies.forEach((dependency) -> description.addDependency(dependency.getId(),
 				MetadataBuildItemMapper.toDependency(dependency)));
 	}

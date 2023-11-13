@@ -16,8 +16,10 @@
 
 package io.spring.initializr.generator.project;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import io.spring.initializr.generator.buildsystem.BuildSystem;
@@ -40,6 +42,8 @@ public class MutableProjectDescription implements ProjectDescription {
 	private BuildSystem buildSystem;
 
 	private Packaging packaging;
+
+	private ArrayList<String> packages = new ArrayList<>();
 
 	private Language language;
 
@@ -82,6 +86,7 @@ public class MutableProjectDescription implements ProjectDescription {
 		this.applicationName = source.getApplicationName();
 		this.packageName = source.getPackageName();
 		this.baseDirectory = source.getBaseDirectory();
+		this.packages = source.getPackages();
 	}
 
 	@Override
@@ -196,6 +201,10 @@ public class MutableProjectDescription implements ProjectDescription {
 		this.applicationName = applicationName;
 	}
 
+	public void setPackages(ArrayList<String> packages) {
+		this.packages = packages;
+	}
+
 	@Override
 	public String getPackageName() {
 		if (StringUtils.hasText(this.packageName)) {
@@ -220,4 +229,8 @@ public class MutableProjectDescription implements ProjectDescription {
 		this.baseDirectory = baseDirectory;
 	}
 
+	@Override
+	public ArrayList<String> getPackages() {
+		return packages;
+	}
 }

@@ -16,6 +16,7 @@
 
 package io.spring.initializr.generator.spring.code;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
@@ -25,6 +26,7 @@ import java.util.stream.Collectors;
 import io.spring.initializr.generator.language.CompilationUnit;
 import io.spring.initializr.generator.language.SourceCode;
 import io.spring.initializr.generator.language.SourceCodeWriter;
+import io.spring.initializr.generator.language.SourceStructure;
 import io.spring.initializr.generator.language.TypeDeclaration;
 import io.spring.initializr.generator.project.ProjectDescription;
 import io.spring.initializr.generator.project.contributor.ProjectContributor;
@@ -77,8 +79,11 @@ public class MainSourceCodeProjectContributor<T extends TypeDeclaration, C exten
 		customizeMainApplicationType(mainApplicationType);
 		customizeMainCompilationUnit(compilationUnit);
 		customizeMainSourceCode(sourceCode);
+		SourceStructure structure = this.description.getBuildSystem().getMainSource(projectRoot, this.description.getLanguage());
+		structure.setPackages(description.getPackages());
+
 		this.sourceWriter.writeTo(
-				this.description.getBuildSystem().getMainSource(projectRoot, this.description.getLanguage()),
+				structure,
 				sourceCode);
 	}
 

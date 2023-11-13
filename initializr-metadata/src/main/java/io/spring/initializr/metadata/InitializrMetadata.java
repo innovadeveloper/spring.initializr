@@ -39,11 +39,16 @@ public class InitializrMetadata {
 
 	private final TypeCapability types = new TypeCapability();
 
+//	private final PackagesCapability packages = new PackagesCapability();
+
 	private final SingleSelectCapability bootVersions = new SingleSelectCapability("bootVersion", "Spring Boot Version",
 			"spring boot version");
 
 	private final SingleSelectCapability packagings = new SingleSelectCapability("packaging", "Packaging",
 			"project packaging");
+
+	private final SingleSelectCapability packages = new SingleSelectCapability("packages", "Packages",
+			"project packages");
 
 	private final SingleSelectCapability javaVersions = new SingleSelectCapability("javaVersion", "Java Version",
 			"language level");
@@ -90,6 +95,9 @@ public class InitializrMetadata {
 	public SingleSelectCapability getPackagings() {
 		return this.packagings;
 	}
+	public SingleSelectCapability getPackages() {
+		return this.packages;
+	}
 
 	public SingleSelectCapability getJavaVersions() {
 		return this.javaVersions;
@@ -133,6 +141,7 @@ public class InitializrMetadata {
 		this.types.merge(other.types);
 		this.bootVersions.merge(other.bootVersions);
 		this.packagings.merge(other.packagings);
+		this.packages.merge(other.packages);
 		this.javaVersions.merge(other.javaVersions);
 		this.languages.merge(other.languages);
 		this.name.merge(other.name);
@@ -245,6 +254,7 @@ public class InitializrMetadata {
 		defaults.put("type", defaultId(this.types));
 		defaults.put("bootVersion", defaultId(this.bootVersions));
 		defaults.put("packaging", defaultId(this.packagings));
+		defaults.put("packages", defaultId(this.packages));
 		defaults.put("javaVersion", defaultId(this.javaVersions));
 		defaults.put("language", defaultId(this.languages));
 		defaults.put("groupId", this.groupId.getContent());

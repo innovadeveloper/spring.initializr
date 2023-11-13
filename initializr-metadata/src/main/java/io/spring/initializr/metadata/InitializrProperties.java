@@ -51,6 +51,12 @@ public class InitializrProperties extends InitializrConfiguration {
 	private final List<DefaultMetadataElement> packagings = new ArrayList<>();
 
 	/**
+	 * Available packages types.
+	 */
+	@JsonIgnore
+	private final List<DefaultMetadataElement> packages = new ArrayList<>();
+
+	/**
 	 * Available java versions.
 	 */
 	@JsonIgnore
@@ -114,6 +120,9 @@ public class InitializrProperties extends InitializrConfiguration {
 
 	public List<DefaultMetadataElement> getPackagings() {
 		return this.packagings;
+	}
+	public List<DefaultMetadataElement> getPackages() {
+		return this.packages;
 	}
 
 	public List<DefaultMetadataElement> getJavaVersions() {

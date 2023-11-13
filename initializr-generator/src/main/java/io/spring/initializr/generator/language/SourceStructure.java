@@ -19,6 +19,7 @@ package io.spring.initializr.generator.language;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 
 /**
  * Provide dedicated methods for a structure that holds sources.
@@ -34,6 +35,12 @@ public class SourceStructure {
 	private final Path sourcesDirectory;
 
 	private final Path resourcesDirectory;
+
+	private ArrayList<String> packages = new ArrayList<>();
+
+	public void setPackages(ArrayList<String> packages) {
+		this.packages = packages;
+	}
 
 	public SourceStructure(Path rootDirectory, Language language) {
 		this.rootDirectory = rootDirectory;
@@ -127,8 +134,13 @@ public class SourceStructure {
 		Files.createFile(file);
 	}
 
+	public ArrayList<String> getPackages() {
+		return packages;
+	}
+
 	private static Path resolvePackage(Path directory, String packageName) {
 		return directory.resolve(packageName.replace('.', '/'));
 	}
+
 
 }

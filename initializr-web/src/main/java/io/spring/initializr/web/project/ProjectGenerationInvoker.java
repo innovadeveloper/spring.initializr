@@ -16,6 +16,7 @@
 
 package io.spring.initializr.web.project;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.nio.file.Path;

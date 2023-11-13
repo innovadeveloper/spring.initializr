@@ -16,10 +16,12 @@
 
 package io.spring.initializr.generator.language.java;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Modifier;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -100,6 +102,11 @@ public class JavaSourceCodeWriter implements SourceCodeWriter<JavaSourceCode> {
 	private void writeTo(SourceStructure structure, JavaCompilationUnit compilationUnit) throws IOException {
 		Path output = structure.createSourceFile(compilationUnit.getPackageName(), compilationUnit.getName());
 		Files.createDirectories(output.getParent());
+
+		for (String packagePath : structure.getPackages()) {
+			Path path = Paths.get(output.getParent().toString() + "/" + packagePath);
+			Files.createDirectories(path);
+		}
 		try (IndentingWriter writer = this.indentingWriterFactory.createIndentingWriter("java",
 				Files.newBufferedWriter(output))) {
 			writer.println("package " + compilationUnit.getPackageName() + ";");
