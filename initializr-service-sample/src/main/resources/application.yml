@@ -3,19 +3,16 @@ initializr:
   packages:
     - name: infrastructure/service
       id: infrastructure/service
-      default: false
     - name: infrastructure/dto
       id: infrastructure/dto
-      default: false
     - name: domain/dto
       id: domain/dto
-      default: false
     - name: domain/service
       id: domain/service
-      default: false
     - name: ui/controller
       id: ui/controller
-      default: false
+    - name: ui/page
+      id: ui/page
   env:
     maven:
       parent:
