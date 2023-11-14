@@ -45,8 +45,22 @@ public class DefaultMavenBuildCustomizer implements BuildCustomizer<MavenBuild> 
 	@Override
 	public void customize(MavenBuild build) {
 		build.settings().name(this.description.getName()).description(this.description.getDescription());
+//		Object da = build.repositories().items();
+		build.repositories().add("maven-central");
+		build.repositories().add("nexus-snapshots");
+		build.repositories().add("nexus-releases");
+
 		build.properties().property("java.version", this.description.getLanguage().jvmVersion());
 		build.plugins().add("org.springframework.boot", "spring-boot-maven-plugin");
+		build.plugins().add("org.apache.maven.plugins", "maven-jar-plugin", (plugin) ->
+				plugin.version("2.4")
+				.configuration((configuration) ->
+						configuration.add("archive", (pluginProperty) -> {
+							pluginProperty.add("manifest", (manifestProperty) -> {
+								manifestProperty.add("mainClass", description.getPackageName() + "." + description.getApplicationName());
+							});
+						})
+		));
 
 		Maven maven = this.metadata.getConfiguration().getEnv().getMaven();
 		String springBootVersion = this.description.getPlatformVersion().toString();

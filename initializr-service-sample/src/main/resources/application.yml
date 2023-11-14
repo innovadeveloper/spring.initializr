@@ -14,6 +14,23 @@ initializr:
     - name: ui/page
       id: ui/page
   env:
+    repositories:
+      maven-central:
+        id: maven-central
+        name: maven-central
+        url: https://repo.maven.apache.org/maven2
+      nexus-snapshots:
+        id: nexus-snapshots
+        name: nexus-snapshots
+        url: https://artifactory-service.abexa.pe/repository/maven-snapshots
+        snapshotsEnabled: true
+        releasesEnabled: false
+      nexus-releases:
+        id: nexus-releases
+        name: nexus-releases
+        url: https://artifactory-service.abexa.pe/repository/maven-releases
+        snapshotsEnabled: false
+        releasesEnabled: true
     maven:
       parent:
         groupId: com.abexa.system
