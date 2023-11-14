@@ -1,5 +1,12 @@
 # initializr.env.maven
 initializr:
+  repositories:
+    - name: nexus-releases
+      id: nexus-releases
+    - name: nexus-snapshots
+      id: nexus-snapshots
+    - name: maven-central
+      id: maven-central
   packages:
     - name: infrastructure/service
       id: infrastructure/service
@@ -19,6 +26,8 @@ initializr:
         id: maven-central
         name: maven-central
         url: https://repo.maven.apache.org/maven2
+        snapshotsEnabled: false
+        releasesEnabled: true
       nexus-snapshots:
         id: nexus-snapshots
         name: nexus-snapshots

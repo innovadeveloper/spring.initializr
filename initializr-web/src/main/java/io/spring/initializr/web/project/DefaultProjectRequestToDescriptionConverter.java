@@ -98,10 +98,15 @@ public class DefaultProjectRequestToDescriptionConverter
 		description.setPlatformVersion(platformVersion);
 		description.setVersion(request.getVersion());
 		description.setPackages((ArrayList<String>) metadata.getPackages()
-			.getContent()
-			.stream()
-			.map(item -> item.getName())
-			.collect(Collectors.toList()));
+				.getContent()
+				.stream()
+				.map(item -> item.getName())
+				.collect(Collectors.toList()));
+		description.setRepositories((ArrayList<String>) metadata.getRepositories()
+				.getContent()
+				.stream()
+				.map(item -> item.getId())
+				.collect(Collectors.toList()));
 		resolvedDependencies.forEach((dependency) -> description.addDependency(dependency.getId(),
 				MetadataBuildItemMapper.toDependency(dependency)));
 	}

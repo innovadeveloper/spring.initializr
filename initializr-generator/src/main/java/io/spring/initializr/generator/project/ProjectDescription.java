@@ -122,4 +122,6 @@ public interface ProjectDescription {
 
 	ArrayList<String> getPackages();
 
+	ArrayList<String> getRepositories();
+
 }

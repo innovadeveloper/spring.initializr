@@ -82,7 +82,7 @@ public class MainSourceCodeProjectContributor<T extends TypeDeclaration, C exten
 		SourceStructure structure = this.description.getBuildSystem()
 			.getMainSource(projectRoot, this.description.getLanguage());
 		structure.setPackages(description.getPackages());
-
+		structure.setRepositories(description.getRepositories());
 		this.sourceWriter.writeTo(structure, sourceCode);
 	}
 

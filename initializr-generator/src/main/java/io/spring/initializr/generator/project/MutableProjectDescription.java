@@ -44,6 +44,7 @@ public class MutableProjectDescription implements ProjectDescription {
 	private Packaging packaging;
 
 	private ArrayList<String> packages = new ArrayList<>();
+	private ArrayList<String> repositories = new ArrayList<>();
 
 	private Language language;
 
@@ -87,6 +88,7 @@ public class MutableProjectDescription implements ProjectDescription {
 		this.packageName = source.getPackageName();
 		this.baseDirectory = source.getBaseDirectory();
 		this.packages = source.getPackages();
+		this.repositories = source.getRepositories();
 	}
 
 	@Override
@@ -234,4 +236,12 @@ public class MutableProjectDescription implements ProjectDescription {
 		return packages;
 	}
 
+	public void setRepositories(ArrayList<String> repositories) {
+		this.repositories = repositories;
+	}
+
+	@Override
+	public ArrayList<String> getRepositories() {
+		return repositories;
+	}
 }

@@ -50,6 +50,9 @@ public class InitializrMetadata {
 	private final SingleSelectCapability packages = new SingleSelectCapability("packages", "Packages",
 			"project packages");
 
+	private final SingleSelectCapability repositories = new SingleSelectCapability("repositories", "Repositories",
+			"project repositories");
+
 	private final SingleSelectCapability javaVersions = new SingleSelectCapability("javaVersion", "Java Version",
 			"language level");
 
@@ -100,6 +103,10 @@ public class InitializrMetadata {
 		return this.packages;
 	}
 
+	public SingleSelectCapability getRepositories() {
+		return repositories;
+	}
+
 	public SingleSelectCapability getJavaVersions() {
 		return this.javaVersions;
 	}
@@ -143,6 +150,7 @@ public class InitializrMetadata {
 		this.bootVersions.merge(other.bootVersions);
 		this.packagings.merge(other.packagings);
 		this.packages.merge(other.packages);
+		this.repositories.merge(other.repositories);
 		this.javaVersions.merge(other.javaVersions);
 		this.languages.merge(other.languages);
 		this.name.merge(other.name);
@@ -256,6 +264,7 @@ public class InitializrMetadata {
 		defaults.put("bootVersion", defaultId(this.bootVersions));
 		defaults.put("packaging", defaultId(this.packagings));
 		defaults.put("packages", defaultId(this.packages));
+		defaults.put("repositories", defaultId(this.repositories));
 		defaults.put("javaVersion", defaultId(this.javaVersions));
 		defaults.put("language", defaultId(this.languages));
 		defaults.put("groupId", this.groupId.getContent());

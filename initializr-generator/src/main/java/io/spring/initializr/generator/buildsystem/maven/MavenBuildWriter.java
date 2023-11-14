@@ -416,7 +416,8 @@ public class MavenBuildWriter {
 
 	private void writeRepositories(IndentingWriter writer, MavenRepositoryContainer buildRepositories,
 			MavenRepositoryContainer buildPluginRepositories) {
-		List<MavenRepository> repositories = filterRepositories(buildRepositories.items());
+//		List<MavenRepository> repositories = filterRepositories(buildRepositories.items());
+		List<MavenRepository> repositories = buildRepositories.items().collect(Collectors.toList());
 		List<MavenRepository> pluginRepositories = filterRepositories(buildPluginRepositories.items());
 		if (repositories.isEmpty() && pluginRepositories.isEmpty()) {
 			return;

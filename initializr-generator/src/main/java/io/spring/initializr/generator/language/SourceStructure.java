@@ -37,6 +37,11 @@ public class SourceStructure {
 	private final Path resourcesDirectory;
 
 	private ArrayList<String> packages = new ArrayList<>();
+	private ArrayList<String> repositories = new ArrayList<>();
+
+	public void setRepositories(ArrayList<String> repositories) {
+		this.repositories = repositories;
+	}
 
 	public void setPackages(ArrayList<String> packages) {
 		this.packages = packages;
@@ -136,6 +141,10 @@ public class SourceStructure {
 
 	public ArrayList<String> getPackages() {
 		return packages;
+	}
+
+	public ArrayList<String> getRepositories() {
+		return repositories;
 	}
 
 	private static Path resolvePackage(Path directory, String packageName) {
