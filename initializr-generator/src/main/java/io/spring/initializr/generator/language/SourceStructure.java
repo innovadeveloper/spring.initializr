@@ -142,5 +142,4 @@ public class SourceStructure {
 		return directory.resolve(packageName.replace('.', '/'));
 	}
 
-
 }

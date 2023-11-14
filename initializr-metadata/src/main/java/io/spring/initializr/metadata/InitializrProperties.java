@@ -121,6 +121,7 @@ public class InitializrProperties extends InitializrConfiguration {
 	public List<DefaultMetadataElement> getPackagings() {
 		return this.packagings;
 	}
+
 	public List<DefaultMetadataElement> getPackages() {
 		return this.packages;
 	}

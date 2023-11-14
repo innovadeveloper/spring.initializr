@@ -39,7 +39,7 @@ public class InitializrMetadata {
 
 	private final TypeCapability types = new TypeCapability();
 
-//	private final PackagesCapability packages = new PackagesCapability();
+	// private final PackagesCapability packages = new PackagesCapability();
 
 	private final SingleSelectCapability bootVersions = new SingleSelectCapability("bootVersion", "Spring Boot Version",
 			"spring boot version");
@@ -95,6 +95,7 @@ public class InitializrMetadata {
 	public SingleSelectCapability getPackagings() {
 		return this.packagings;
 	}
+
 	public SingleSelectCapability getPackages() {
 		return this.packages;
 	}

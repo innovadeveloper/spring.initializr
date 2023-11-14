@@ -79,12 +79,11 @@ public class MainSourceCodeProjectContributor<T extends TypeDeclaration, C exten
 		customizeMainApplicationType(mainApplicationType);
 		customizeMainCompilationUnit(compilationUnit);
 		customizeMainSourceCode(sourceCode);
-		SourceStructure structure = this.description.getBuildSystem().getMainSource(projectRoot, this.description.getLanguage());
+		SourceStructure structure = this.description.getBuildSystem()
+			.getMainSource(projectRoot, this.description.getLanguage());
 		structure.setPackages(description.getPackages());
 
-		this.sourceWriter.writeTo(
-				structure,
-				sourceCode);
+		this.sourceWriter.writeTo(structure, sourceCode);
 	}
 
 	@SuppressWarnings("unchecked")

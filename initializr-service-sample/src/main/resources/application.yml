@@ -27,6 +27,7 @@ initializr:
     - name: Web
       content:
         - name: Web
+          id: web
           description: Servlet web application with Spring MVC and Tomcat
   languages:
     - name: Java

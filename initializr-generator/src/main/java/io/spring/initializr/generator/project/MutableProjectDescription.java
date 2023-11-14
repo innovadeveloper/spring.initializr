@@ -233,4 +233,5 @@ public class MutableProjectDescription implements ProjectDescription {
 	public ArrayList<String> getPackages() {
 		return packages;
 	}
+
 }
