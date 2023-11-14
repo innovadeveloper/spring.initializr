@@ -1,0 +1,44 @@
+#storage:  # no mandatorio, aunque si se colocan estos paths, se crearàn automàticamente los directorios del PV correspondiente...
+#  volume_size: 1Gi
+#  mount_path:
+#    - "/opt/media/assets/"
+#    - "/opt/media/temp_files/"
+service:
+#  ports:
+#    - protocol: TCP
+#      port: 9004
+#      targetPort: 8000
+#      nodePort: 30000
+enviroment_variables:
+  - name: server.port
+    value: '8080'
+  - name: app_name
+    value: 'initializr_service'
+resources_plan:
+  max_memory_usage: 1G
+  min_memory_usage: 1G
+  min_cpu_usage: 0.5G
+  max_cpu_usage: 1G
+project:
+  configuration_tool:
+    build: maven
+    path: pom.xml # mandatorio para obtener la versión de la aplicación
+  project_info:
+    type: web
+    language: java
+    framework: springboot
+    app_version: 0.0.2
+    app_name: initializr-service-webapi # solo caracteres alfanumèricos y '-' o '.'
+  #  credentials:
+  #    credentials_id: developer_pwd # mandatorio para el clone del repositorio si es q se usará la directiva "git", pero si se usa el "checkout scm" no es mandatorio
+  repository_info:
+    registry_hostname: 'https://registrydev-service.abexa.pe' # nexus.abexa.local:9876/snapshots
+    repository_server_type: private
+    environment_type: dev
+    registry_image: registrydev-service.abexa.pe/initializr-service-webapi # automàticamente se completarà la versiòn 'registry:<version_project>' al leer del project.configuration_tool.path (pom.xml)
+    registry_credentials_id: abexa-registry-docker-secret # no mandatorio, solo en caso de querer extraer de un registry privado
+    imagePullPolicy: Always # IfNotPresent, Always ... indicarà si realizar el pull de la imàgen màs de una vez..
+    destroyIfExists: true # destruye los servicios, deployment, pv, pvc
+replicas:
+  min: 1
+  max: 2
