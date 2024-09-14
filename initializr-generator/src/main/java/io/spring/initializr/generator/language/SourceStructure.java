@@ -37,6 +37,7 @@ public class SourceStructure {
 	private final Path resourcesDirectory;
 
 	private ArrayList<String> packages = new ArrayList<>();
+
 	private ArrayList<String> repositories = new ArrayList<>();
 
 	public void setRepositories(ArrayList<String> repositories) {

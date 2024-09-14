@@ -1,0 +1,67 @@
+storage:  # no mandatorio, aunque si se colocan estos paths, se crearàn automàticamente los directorios del PV correspondiente...
+  volume_size: {{storageSize}}
+  mount_path:
+    - {{mountPathTemplate}}
+service:
+  ports:
+    - protocol: TCP
+      port: {{servicePort}}
+      targetPort: {{targetPort}}
+      nodePort: {{nodePort}}
+enviroment_variables:
+  - name: server.port
+    value: '0'
+  - name: server.servlet.context-path
+    value: '/context'
+  - name: spring.application.name
+    value: {{applicationName}}
+  - name: spring.cloud.vault.enabled
+    value: 'true'
+  - name: spring.cloud.vault.fail-fast
+    value: 'true'
+  - name: spring.cloud.vault.authentication
+    value: 'TOKEN'
+  - name: spring.cloud.vault.host
+    value: 'hashicorpvault-service.abexa.pe'
+  - name: spring.cloud.vault.port
+    value: '80'
+  - name: spring.cloud.vault.token
+    value: {{HVToken}}
+  - name: spring.cloud.vault.scheme
+    value: 'http'
+  - name: spring.cloud.vault.kv.backend
+    value: 'secret'
+  - name: spring.cloud.vault.kv.application-name
+    value: {{applicationName}}
+  - name: spring.config.import
+    value: {{applicationPath}}
+  - name: spring.profiles.active
+    value: 'prod'
+resources_plan:
+  max_memory_usage: 1G
+  min_memory_usage: 1G
+  min_cpu_usage: 0.5G
+  max_cpu_usage: 1G
+project:
+  configuration_tool:
+    build: maven
+    path: pom.xml # mandatorio para obtener la versión de la aplicación
+  project_info:
+    type: web
+    language: java
+    framework: springboot
+    app_version: 0.0.0
+    app_name: {{applicationName}} # solo caracteres alfanumèricos y '-' o '.'
+  #  credentials:
+  #    credentials_id: developer_pwd # mandatorio para el clone del repositorio si es q se usará la directiva "git", pero si se usa el "checkout scm" no es mandatorio
+  repository_info:
+    registry_hostname: 'https://registrydev-service.abexa.pe'
+    repository_server_type: private
+    environment_type: prod
+    registry_image: {{registryImageWithName}} # automàticamente se completarà la versiòn 'registry:<version_project>' al leer del project.configuration_tool.path (pom.xml)
+    registry_credentials_id: {{kubernetesSecret}} # no mandatorio, solo en caso de querer extraer de un registry privado
+    imagePullPolicy: Always # IfNotPresent, Always ... indicarà si realizar el pull de la imàgen màs de una vez..
+    destroyIfExists: true # destruye los servicios, deployment, pv, pvc
+replicas:
+  min: 1
+  max: 1

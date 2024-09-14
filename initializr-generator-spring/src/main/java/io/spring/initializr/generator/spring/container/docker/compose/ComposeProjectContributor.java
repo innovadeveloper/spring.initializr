@@ -25,6 +25,7 @@ import io.spring.initializr.generator.container.docker.compose.ComposeFile;
 import io.spring.initializr.generator.container.docker.compose.ComposeFileWriter;
 import io.spring.initializr.generator.io.IndentingWriter;
 import io.spring.initializr.generator.io.IndentingWriterFactory;
+import io.spring.initializr.generator.project.ProjectGenerationConfiguration;
 import io.spring.initializr.generator.project.contributor.ProjectContributor;
 
 /**

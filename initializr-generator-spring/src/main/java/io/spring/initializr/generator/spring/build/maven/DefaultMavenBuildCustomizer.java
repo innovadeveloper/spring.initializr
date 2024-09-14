@@ -51,15 +51,14 @@ public class DefaultMavenBuildCustomizer implements BuildCustomizer<MavenBuild> 
 
 		build.properties().property("java.version", this.description.getLanguage().jvmVersion());
 		build.plugins().add("org.springframework.boot", "spring-boot-maven-plugin");
-		build.plugins().add("org.apache.maven.plugins", "maven-jar-plugin", (plugin) ->
-				plugin.version("2.4")
-				.configuration((configuration) ->
-						configuration.add("archive", (pluginProperty) -> {
-							pluginProperty.add("manifest", (manifestProperty) -> {
-								manifestProperty.add("mainClass", description.getPackageName() + "." + description.getApplicationName());
-							});
-						})
-		));
+		build.plugins()
+			.add("org.apache.maven.plugins", "maven-jar-plugin", (plugin) -> plugin.version("2.4")
+				.configuration((configuration) -> configuration.add("archive", (pluginProperty) -> {
+					pluginProperty.add("manifest", (manifestProperty) -> {
+						manifestProperty.add("mainClass",
+								description.getPackageName() + "." + description.getApplicationName());
+					});
+				})));
 
 		Maven maven = this.metadata.getConfiguration().getEnv().getMaven();
 		String springBootVersion = this.description.getPlatformVersion().toString();

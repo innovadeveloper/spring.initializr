@@ -1,4 +1,8 @@
 # initializr.env.maven
+spring:
+  devtools:
+    restart:
+      enabled: false
 initializr:
   repositories:
     - name: nexus-releases

@@ -44,6 +44,7 @@ public class MutableProjectDescription implements ProjectDescription {
 	private Packaging packaging;
 
 	private ArrayList<String> packages = new ArrayList<>();
+
 	private ArrayList<String> repositories = new ArrayList<>();
 
 	private Language language;
@@ -244,4 +245,5 @@ public class MutableProjectDescription implements ProjectDescription {
 	public ArrayList<String> getRepositories() {
 		return repositories;
 	}
+
 }

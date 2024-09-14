@@ -56,7 +56,6 @@ public class InitializrProperties extends InitializrConfiguration {
 	@JsonIgnore
 	private final List<DefaultMetadataElement> packages = new ArrayList<>();
 
-
 	/**
 	 * Available packages types.
 	 */
