@@ -1,0 +1,44 @@
+<!-- Plantilla del appender base -->
+<included>
+
+<!--    <property name="filePath" value="/tmp/logs/monitor-logging-webapi.log" />-->
+    <property name="appFilePath" value="/tmp/logs/monitor-logging-webapi.log" />
+    <property name="appFileNamePattern" value="/tmp/logs/monitor-logging-webapi.%i.log" />
+
+    <appender name="File" class="ch.qos.logback.core.FileAppender">
+<!--        <file>logs/monitor-logging-webapi.log</file>-->
+        <file>${appFilePath}</file>
+        <append>true</append>
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp />
+                <mdc />
+                <message />
+                <pattern>
+                    <pattern>
+                        <!-- we can add some custom fields sendTo be sent with all the log entries. -->
+                        {
+                        "app-name": "${app-name}",
+                        "version-name": "${version-name}"
+                        }
+                    </pattern>
+                </pattern>
+                <loggerName />
+                <threadName />
+                <logLevel />
+                <logLevelValue />
+                <stackTrace />
+                <logstashMarkers />
+            </providers>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>${appFileNamePattern}</fileNamePattern>
+            <minIndex>1</minIndex>
+            <maxIndex>1</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+        <cleanHistoryOnStart>true</cleanHistoryOnStart>
+    </appender>
+</included>

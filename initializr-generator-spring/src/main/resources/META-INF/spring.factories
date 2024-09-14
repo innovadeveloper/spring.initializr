@@ -10,4 +10,6 @@ io.spring.initializr.generator.spring.configuration.ApplicationConfigurationProj
 io.spring.initializr.generator.spring.documentation.HelpDocumentProjectGenerationConfiguration,\
 io.spring.initializr.generator.spring.scm.git.GitProjectGenerationConfiguration,\
 io.spring.initializr.generator.spring.devops.DevOpsProjectConfiguration,\
-io.spring.initializr.generator.spring.configuration.CustomMavenBuildConfiguration
+io.spring.initializr.generator.spring.configuration.CustomMavenBuildConfiguration,\
+io.spring.initializr.generator.spring.configuration.YamlApplicationPropertiesContributor,\
+io.spring.initializr.generator.spring.logback.LogbackProjectConfiguration

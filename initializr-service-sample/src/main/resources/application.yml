@@ -12,16 +12,20 @@ initializr:
     - name: maven-central
       id: maven-central
   packages:
+    - name: infrastructure
+      id: infrastructure
+    - name: infrastructure/entities
+      id: infrastructure/entities
     - name: infrastructure/service
       id: infrastructure/service
-    - name: infrastructure/dto
-      id: infrastructure/dto
+    - name: infrastructure/repository
+      id: infrastructure/repository
     - name: domain/dto
       id: domain/dto
-    - name: domain/service
-      id: domain/service
-    - name: ui/controller
-      id: ui/controller
+    - name: domain/constants
+      id: domain/constants
+    - name: ui/controllers
+      id: ui/controllers
     - name: ui/page
       id: ui/page
   env:

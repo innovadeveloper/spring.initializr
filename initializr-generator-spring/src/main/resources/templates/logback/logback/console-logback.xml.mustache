@@ -1,0 +1,8 @@
+<!-- Plantilla del appender base -->
+<included>
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%-30(%d %p) %-30.30([%t] %C): %msg%n%throwable</Pattern>
+        </layout>
+    </appender>
+</included>
